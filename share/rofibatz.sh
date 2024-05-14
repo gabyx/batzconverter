@@ -4,7 +4,8 @@ set -x
 echo -en "\0prompt\x1f🦇 Time around the world \n"
 
 if [[ ${ROFI_RETV} == 2 ]];then
-    batz $*|sed -e "s/\x1b\[.\{1,5\}m//g"
+    USE_GUM= \
+        batz $*|sed -e "s/\x1b\[.\{1,5\}m//g"
     exit 0
 elif [[ ${ROFI_RETV} == 1 ]];then
     echo "$@" | xclip -i -selection clipboard
